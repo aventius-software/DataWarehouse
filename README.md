@@ -1,6 +1,6 @@
 This is an open source and free to use basic generic SQL Server data warehouse (or it will be ;-)
 
-It mainly consists of the tables, functions, procedures from our blog articles on data warehousing. We hope you like it and feel free to use anything from it in your own projects. A little link back to this would be appreciated though. Also feel free to fork, send a pull request or log any issues you find.
+It mainly consists of the tables, functions, procedures from our blog (https://aventius.co.uk/blog/) articles on data warehousing. We hope you like it and feel free to use anything from it in your own projects. A little link back to this would be appreciated though. Also feel free to fork, send a pull request or log any issues you find.
 
 It has been designed using Visual Studio 2019 and consists of 2 projects:-
 
