@@ -1,0 +1,9 @@
+﻿
+CREATE FUNCTION [Chronological].[PreviousFiscalQuarter] (
+	@date DATE	
+)
+RETURNS TINYINT
+AS
+BEGIN
+	RETURN DATEPART(QUARTER, DATEADD(MONTH, -3 * 2, @date))
+END

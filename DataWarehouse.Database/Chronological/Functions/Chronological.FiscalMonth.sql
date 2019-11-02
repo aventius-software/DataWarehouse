@@ -1,0 +1,9 @@
+﻿
+CREATE FUNCTION [Chronological].[FiscalMonth] (
+	@date DATE	
+)
+RETURNS TINYINT
+AS
+BEGIN
+	RETURN MONTH(DATEADD(MONTH, -3, @date))
+END

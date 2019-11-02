@@ -1,0 +1,8 @@
+﻿
+CREATE FUNCTION [Chronological].[CalendarQuater] (
+	@date DATE
+)
+RETURNS TINYINT AS
+BEGIN
+	RETURN DATEPART(QUARTER, @date)
+END
