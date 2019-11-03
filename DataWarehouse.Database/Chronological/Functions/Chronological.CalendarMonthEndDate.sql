@@ -1,0 +1,8 @@
+﻿
+CREATE FUNCTION [Chronological].[CalendarMonthEndDate] (
+	@date DATE
+)
+RETURNS DATE AS
+BEGIN
+	RETURN DATEADD(DAY, -1, DATEADD(MONTH, 1, DATEFROMPARTS(YEAR(@date), MONTH(@date), 1)))
+END

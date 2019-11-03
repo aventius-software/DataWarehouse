@@ -1,5 +1,5 @@
 ﻿
-CREATE FUNCTION [Chronological].[PreviousCalendarQuater] (
+CREATE FUNCTION [Chronological].[PreviousCalendarQuarter] (
 	@date DATE
 )
 RETURNS TINYINT AS

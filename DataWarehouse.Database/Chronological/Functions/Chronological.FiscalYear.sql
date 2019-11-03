@@ -1,15 +1,16 @@
 ﻿CREATE FUNCTION [Chronological].[FiscalYear] (
 	@date DATE
 	,@separator VARCHAR(1)
+	,@fiscalYearStartMonth TINYINT
 )
 RETURNS VARCHAR(7)
 AS
 BEGIN
 	-- first calculate the starting year, if the month is 
-	-- is before April then the starting year is the previous year
-	-- otherwise its just the current year
+	-- is before fiscal year start month (e.g. April) then the starting 
+	-- year is the previous year, otherwise its just the current year
 	DECLARE @startingFiscalYear INT = CASE 
-		WHEN MONTH(@date) < 4 THEN YEAR(@date) - 1
+		WHEN MONTH(@date) < @fiscalYearStartMonth THEN YEAR(@date) - 1
 		ELSE YEAR(@date)
 	END	
 
