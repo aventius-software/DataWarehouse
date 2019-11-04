@@ -1,4 +1,4 @@
-This is an open source and free to use basic generic SQL Server data warehouse (or it will be ;-)
+This is an open source and free to use basic generic Microsoft SQL Server data warehouse (or it will be ;-). We've set this to SQL 2012 compatibility level as most of the features don't require newer versions and it should allow users who are still on this version of SQL Server to use everything in this repo.
 
 It mainly consists of the tables, functions, procedures from our blog (https://aventius.co.uk/blog/) articles on data warehousing. We hope you like it and feel free to use anything from it in your own projects. A little link back to this would be appreciated though. Also feel free to fork, send a pull request or log any issues you find.
 
