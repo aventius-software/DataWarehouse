@@ -1,9 +1,0 @@
-﻿
-CREATE FUNCTION [Chronological].[NextFiscalMonth] (
-	@date DATE	
-)
-RETURNS TINYINT
-AS
-BEGIN
-	RETURN MONTH(DATEADD(MONTH, -2, @date))
-END

@@ -1,9 +1,0 @@
-﻿
-CREATE FUNCTION [Chronological].[FiscalQuarter] (
-	@date DATE	
-)
-RETURNS TINYINT
-AS
-BEGIN
-	RETURN DATEPART(QUARTER, DATEADD(MONTH, -3, @date))
-END

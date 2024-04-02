@@ -1,8 +1,0 @@
-﻿
-CREATE FUNCTION [Chronological].[CalendarQuarterEndDate] (
-	@date DATE
-)
-RETURNS DATE AS
-BEGIN
-	RETURN DATEADD(DAY, -1, DATEADD(QUARTER, DATEPART(QUARTER, @date), DATEFROMPARTS(YEAR(@date), 1, 1)))
-END
