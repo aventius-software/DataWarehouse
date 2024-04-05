@@ -71,5 +71,7 @@
     <Build Include="Chronological\Functions\Chronological.fnGetBankHolidayDateForNewYearsDay.sql" />
     <Build Include="Chronological\Functions\Chronological.fnGetBankHolidayDateForSpring.sql" />
     <Build Include="Chronological\Functions\Chronological.fnGetBankHolidayDateForSummer.sql" />
+    <Build Include="Chronological\Functions\Chronological.fnGetBankHolidayDateForGoodFriday.sql" />
+    <Build Include="Chronological\Functions\Chronological._fnGetBankHolidayDateForBoxingDay.sql" />
   </ItemGroup>
 </Project>

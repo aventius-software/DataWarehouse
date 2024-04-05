@@ -1,5 +1,6 @@
-﻿CREATE FUNCTION [Chronological].[fnGetBankHolidayDateForChristmasDay] (
-	@date DATE
+﻿
+CREATE FUNCTION [Chronological].[fnGetBankHolidayDateForChristmasDay] (
+	@year INT
 )
 RETURNS DATE AS
 BEGIN
@@ -11,31 +12,20 @@ BEGIN
 	-- holiday is of course very similar. For more info on UK bank holidays see this link
 	-- https://www.gov.uk/bank-holidays?mod=article_inline
 
-	-- First get the real Christmas for the year that the specified date parameter occurs
-	DECLARE @christmasDay DATE = DATEFROMPARTS(YEAR(@date), 12, 25)
+	-- First get the real Christmas date for the year
+	DECLARE @christmasDay DATE = DATEFROMPARTS(@year, 12, 25)
 		
-	-- We need to bump to the following Monday if it falls on a weekend...	
-	IF DATENAME(WEEKDAY, @christmasDay) IN ('Saturday', 'Sunday')	
-	BEGIN
-		-- Yes... Christmas day is on a weekend, so we adjust to move the bank holiday 
-		-- to the following Monday. You do a mathematical calculation for this but here
-		-- I'm being intentionally specific so you can see the logic ;-)
-		SET @christmasDay = CASE
-			-- If Christmas is on a Friday (and Boxing day the Saturday), then we bump 3 days
-			-- to the Monday for the bank holiday ;-)
-			WHEN DATENAME(WEEKDAY, @christmasDay) = 'Friday' THEN DATEADD(DAY, 3, @christmasDay)
+	-- We need to adjust if this date is on the weekend...
+	RETURN CASE
+		-- If Christmas is on a Saturday (and Boxing day the Sunday), then we jump 2 days
+		-- to get to the following the Monday for the bank holiday. However, if Christmas 
+		-- day is on a Sunday, this is where it gets weird as that means Boxing day (the 26th) 
+		-- is on the Monday and that day is actually taken as the bank holiday for Boxing day. This 
+		-- of course then means that the bank holiday for Christmas now becomes the Tuesday! Which 
+		-- means either way, we still only need to jump 2 days to get the Christmas bank holiday! ;-)
+		WHEN DATENAME(WEEKDAY, @christmasDay) IN ('Saturday', 'Sunday') THEN DATEADD(DAY, 2, @christmasDay)
 
-			-- If Christmas is on a Saturday (and Boxing day the Sunday), then we bump 2 days
-			-- to the Monday for the bank holiday ;-)
-			WHEN DATENAME(WEEKDAY, @christmasDay) = 'Saturday' THEN DATEADD(DAY, 2, @christmasDay)
-
-			-- Which means if we're here, then Christmas has fallen on a Sunday, so we only need 
-			-- to move one day forward to get the Monday for the bank holiday
-			ELSE DATEADD(DAY, 1, @christmasDay)
-		END			
-	END
-    
-	-- This should now contain the date of the bank holiday (which is not neccessarily the same
-	-- date as Christmas day itself ;-)
-	RETURN @christmasDay		
+		-- Otherwise, its just a week day, so no adjustment needed ;-)
+		ELSE @christmasDay
+	END		
 END
