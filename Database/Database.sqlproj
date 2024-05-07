@@ -60,6 +60,8 @@
     <Folder Include="Security" />
     <Folder Include="Chronological" />
     <Folder Include="Chronological\Functions" />
+    <Folder Include="DatabaseAdministration\" />
+    <Folder Include="DatabaseAdministration\Functions\" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Security\Chronological.sql" />
@@ -72,6 +74,16 @@
     <Build Include="Chronological\Functions\Chronological.fnGetBankHolidayDateForSpring.sql" />
     <Build Include="Chronological\Functions\Chronological.fnGetBankHolidayDateForSummer.sql" />
     <Build Include="Chronological\Functions\Chronological.fnGetBankHolidayDateForGoodFriday.sql" />
-    <Build Include="Chronological\Functions\Chronological._fnGetBankHolidayDateForBoxingDay.sql" />
+    <Build Include="DatabaseAdministration\Functions\DatabaseAdministration.fnViewExists.sql" />
+    <Build Include="DatabaseAdministration\Functions\DatabaseAdministration.fnTableExists.sql" />
+    <Build Include="DatabaseAdministration\Functions\DatabaseAdministration.fnColumnExists.sql" />
+    <Build Include="Security\DatabaseAdministration.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\AzureV12\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\AzureV12\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
   </ItemGroup>
 </Project>
